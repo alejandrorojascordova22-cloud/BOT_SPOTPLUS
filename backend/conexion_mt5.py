@@ -1,21 +1,28 @@
-﻿import functools
+try:
+    import MetaTrader5 as mt5
+    MT5_AVAILABLE = True
+except ImportError:
+    mt5 = None
+    MT5_AVAILABLE = False
+import functools
 import threading
-import MetaTrader5 as mt5
 import pandas as pd
-from .config import MT5_LOGIN, MT5_PASSWORD, MT5_SERVER, SIMBOLO, TIMEFRAME_STR, TERMINAL_PATH, NOMBRE_CUENTA
 
+# Bloque seguro para importar MetaTrader5 en Linux o Windows
+
+
+from .config import (
+    MT5_LOGIN, 
+    MT5_PASSWORD, 
+    MT5_SERVER, 
+    SIMBOLO, 
+    TIMEFRAME_STR, 
+    TERMINAL_PATH, 
+    NOMBRE_CUENTA
+)
 TIMEFRAMES = {
-    "M1": mt5.TIMEFRAME_M1,
-    "M3": mt5.TIMEFRAME_M3,
-    "M5": mt5.TIMEFRAME_M5,
-    "M15": mt5.TIMEFRAME_M15,
-    "M30": mt5.TIMEFRAME_M30,
-    "H1": mt5.TIMEFRAME_H1,
-    "H2": mt5.TIMEFRAME_H2,
-    "H4": mt5.TIMEFRAME_H4,
-    "D1": mt5.TIMEFRAME_D1,
-    "W1": mt5.TIMEFRAME_W1,
-    "MN1": mt5.TIMEFRAME_MN1,
+    k: getattr(mt5, "TIMEFRAME_" + k, None)
+    for k in ["M1","M3","M5","M15","M30","H1","H2","H4","D1","W1","MN1"]
 }
 
 # La librería MetaTrader5 NO es segura para llamarse desde varios hilos al

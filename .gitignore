@@ -8,4 +8,7 @@ mobile/node_modules/
 mobile/.expo/
 mobile/dist/
 mobile/web-build/
-.pytest_cache/
+.pytest_cache/*.bak
+prueba_*.py
+mt5_data.py
+arreglar.py
