@@ -1,0 +1,10 @@
+{
+  "telegram_activo": true,
+  "telegram_bot_token": "8691525183:AAGhzDUo8KZQOHDCkv4pFQvPZxSFMR6sPHU",
+  "telegram_chat_id": "6176928832",
+  "telegram_aviso_apertura": true,
+  "telegram_aviso_cierre": true,
+  "telegram_aviso_sl_tp": true,
+  "telegram_aviso_parcial": true,
+  "telegram_aviso_zona": true
+}

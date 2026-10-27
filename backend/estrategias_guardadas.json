@@ -1,0 +1,33 @@
+[
+  {
+    "nombre": "hhh",
+    "explicacion": "SpotPlus ordenada: estructura y contexto en temporalidades agrupadas, confirmación M1/M3/M5, retorno a zona antes de entrar, confluencias de liquidez y pareja de operación corta + runner.",
+    "codigo": "operaciones = []\nif velas_por_temporalidad:\n    operaciones = est.escanear_todas_las_oportunidades(\n        velas_por_temporalidad,\n        porcentaje_tp_intermedia=parametros.get(\"porcentaje_tp_intermedia\", 0.8),\n        ratio_riesgo_beneficio_macro=parametros.get(\"ratio_riesgo_beneficio_macro\", 4.0),\n        sl_buffer_pct=parametros.get(\"sl_buffer_pct\", 0.1),\n        tolerancia_pct=parametros.get(\"tolerancia_pct\", 0.15),\n        roles=roles_temporalidad,\n        modo_liquidez=parametros.get(\"modo_liquidez\", \"confluencia\"),\n        minimo_ratio_tp=parametros.get(\"minimo_ratio_tp\", 0),\n        dividir_con_confirmador=True,\n        porcentaje_tp_confirmador=parametros.get(\"porcentaje_tp_confirmador\", 0.8),\n        esperar_retroceso=True,\n        ruptura_cuerpo_atr=parametros.get(\"ruptura_cuerpo_atr\", 1.0),\n        ruptura_cierre_atr=parametros.get(\"ruptura_cierre_atr\", 0.1),\n    )\nsenal = None",
+    "volumen": 0.01,
+    "sl": 0.0,
+    "tp": 0.0,
+    "modo_riesgo": "monto_fijo",
+    "riesgo_valor": 5000.0,
+    "es_estructura_dinamica": false,
+    "usa_multi_temporalidad": true,
+    "timeframe_entrada": "M5",
+    "timeframe_macro": "H4",
+    "temporalidades_escaneo": [
+      "M1",
+      "M3",
+      "M5",
+      "M15",
+      "M30",
+      "H1",
+      "H2",
+      "H4",
+      "D1",
+      "W1",
+      "MN1"
+    ],
+    "roles_temporalidad": {},
+    "zonas_permitidas": [],
+    "parametros": {},
+    "activos": []
+  }
+]

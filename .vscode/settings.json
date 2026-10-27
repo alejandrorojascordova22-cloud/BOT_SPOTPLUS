@@ -1,0 +1,4 @@
+﻿{
+  "java.import.gradle.enabled": false,
+  "python.defaultInterpreterPath": "${workspaceFolder}\\venv\\Scripts\\python.exe"
+}
