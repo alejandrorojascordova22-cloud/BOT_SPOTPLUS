@@ -60,7 +60,7 @@ else:
 # servidor NO arranca (falla rápido en vez de quedar abierto sin querer).
 API_KEY = os.getenv("API_KEY", "").strip()
 
-SIMBOLO = "XAUUSD"  # Oro - simbolo que funciona confiablemente
+SIMBOLO = os.getenv("MT5_SIMBOLO", "XAUUSD").strip() or "XAUUSD"
 TIMEFRAME_STR = os.getenv("MT5_TIMEFRAME", "M5")
 
 MODO = "demo"
