@@ -728,7 +728,7 @@ def _simbolos_permitidos():
     simbolos = config_bot.get("simbolos_permitidos") or []
     if not simbolos:
         return [config_bot["simbolo"]]
-    return [s.strip().upper() for s in simbolos if str(s).strip()]
+    return [s.strip() for s in simbolos if str(s).strip()]
 
 
 def ciclo_bot():
@@ -1835,7 +1835,7 @@ def get_velas_replay_backtest(
     except ValueError as exc:
         raise HTTPException(status_code=400, detail="Las fechas deben tener formato YYYY-MM-DD") from exc
 
-    simbolo_replay = (simbolo or config_bot["simbolo"]).strip().upper()
+    simbolo_replay = (simbolo or config_bot["simbolo"]).strip()
     df, _ = _velas_backtest(simbolo_replay, desde, hasta, timeframe)
     if df is None or df.empty:
         return {
@@ -1997,9 +1997,9 @@ def post_parcial(ticket: int, parcial: ParcialRequest):
 @app.post("/api/config")
 def post_config(cfg: ConfigRequest):
     if cfg.simbolo is not None:
-        config_bot["simbolo"] = cfg.simbolo.strip().upper()
+        config_bot["simbolo"] = cfg.simbolo.strip()
     if cfg.simbolos_permitidos is not None:
-        config_bot["simbolos_permitidos"] = [s.strip().upper() for s in cfg.simbolos_permitidos if str(s).strip()]
+        config_bot["simbolos_permitidos"] = [s.strip() for s in cfg.simbolos_permitidos if str(s).strip()]
         if not config_bot["simbolos_permitidos"]:
             config_bot["simbolos_permitidos"] = [config_bot["simbolo"]]
     if cfg.estrategia is not None and cfg.estrategia in ESTRATEGIAS:
